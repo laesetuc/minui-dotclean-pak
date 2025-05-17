@@ -20,7 +20,21 @@ Note: The platform folder name is based on the name of your device. For example,
 
 ## Usage
 
-Run the utility to clean the SD Card of Mac filesystem files.
+Run the utility to clean the SD Card of Mac operating system files.
+
+The following directory types will be deleted.
+- .Spotlight-V100 
+- .apDisk 
+- .fseventsd 
+- .TemporaryItems 
+- .Trash 
+- .Trashes
+- __MACOSX
+
+The following file types will be deleted from all sub-directories.
+- ._*
+- .DS_Store
+- *_cache[0-9].db 
 
 ## Acknowledgements
 
