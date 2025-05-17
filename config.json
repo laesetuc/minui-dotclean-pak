@@ -1,0 +1,8 @@
+{
+    "label": "DotClean",
+    "launch": "launch.sh",
+    "description": "Small utility to clean the filesystem of Mac operating system files.",
+    "platforms": [
+        "tg5040"
+    ]
+}

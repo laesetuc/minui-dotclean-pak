@@ -1,0 +1,13 @@
+{
+    "name": "DotClean",
+    "version": "0.1.0",
+    "type": "TOOL",
+    "description": "Small utility to clean the filesystem of Mac operating system files.",
+    "author": "Cuteseal",
+    "repo_url": "https://github.com/laesetuc/minui-dotclean-pak",
+    "release_filename": "Dotclean.pak.zip",
+    "platforms": [
+      "tg5040"
+    ],
+    "launch": "launch.sh"
+  }
