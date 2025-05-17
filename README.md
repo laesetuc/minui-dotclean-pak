@@ -1,5 +1,5 @@
 # minui-dotclean-pak
-Small utility to clean the filesystem of mac "dot" files.
+Small utility to clean the filesystem of Mac operating system files.
 
 ## Requirements
 

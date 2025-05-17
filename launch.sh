@@ -57,11 +57,11 @@ main() {
     cd "$SDCARD_PATH/"
     rm -rf .Spotlight-V100 .apDisk .fseventsd .TemporaryItems .Trash .Trashes
 
-    find . -depth -type f \( -name "._*" -o -name ".DS_Store" \) -not -path "**/._state_seen/*" -delete
+    find . -depth -type f \(  -name "._*" -o -name ".DS_Store" -o -name "*_cache[0-9].db" \) -delete
     find . -depth -type d -name "__MACOSX" -exec rm -rf {} \;
-    find . -type f -name "*_cache[0-9].db" -exec rm -f {} \;
 
     killall minui-presenter >/dev/null 2>&1 || true
     show_message "Cleanup complete!" 2
+}
 
 main "$@"
