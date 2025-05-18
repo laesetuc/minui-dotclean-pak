@@ -52,16 +52,29 @@ main() {
         return 1
     fi
 
+    delete_file="/tmp/delete-file"
+    >"$delete_file"
+
     show_message "Cleaning up dot files..." "forever"
 
     cd "$SDCARD_PATH/"
-    rm -rf .Spotlight-V100 .apDisk .fseventsd .TemporaryItems .Trash .Trashes
 
-    find . -depth -type f \(  -name "._*" -o -name ".DS_Store" -o -name "*_cache[0-9].db" \) -delete
-    find . -depth -type d -name "__MACOSX" -exec rm -rf {} \;
+    find . -maxdepth 1 \( -name ".Spotlight-V100" -o -name ".apDisk" -o -name ".fseventsd" -o -name ".TemporaryItems" -o -name ".Trash" -o -name ".Trashes" \) >> "$delete_file"
+    find . -depth -type f \(  -name "._*" -o -name ".DS_Store" -o -name "*_cache[0-9].db" \) >> "$delete_file"
+    find . -depth -type d -name "__MACOSX" >> "$delete_file"
 
-    killall minui-presenter >/dev/null 2>&1 || true
-    show_message "Cleanup complete!" 2
+    count=$(wc -l < "$delete_file")
+
+    if [ "$count" -eq 0 ]; then
+        killall minui-presenter >/dev/null 2>&1 || true
+        show_message "Nothing to clean up." 2
+    else
+        while IFS= read -r file; do
+            rm -rf "$file"
+        done < "$delete_file"
+        killall minui-presenter >/dev/null 2>&1 || true
+        show_message "Cleanup complete. $count entries deleted." 2
+    fi
 }
 
 main "$@"
