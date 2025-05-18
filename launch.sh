@@ -73,7 +73,7 @@ main() {
             rm -rf "$file"
         done < "$delete_file"
         killall minui-presenter >/dev/null 2>&1 || true
-        show_message "Cleanup complete. $count entries deleted." 2
+        show_message "Cleanup complete. $count items deleted." 2
     fi
 }
 
